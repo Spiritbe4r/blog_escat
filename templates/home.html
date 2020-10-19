@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Escatologico</title>
+
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/articulos.css' %}">
+
+
+    {% endblock css %}
+
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+</head>
+<body>
+
+{% block content %}
+
+
+ <!--Header - menu-->
+ <header>
+
+
+    <div class="header-content">
+
+        <div class="logo">
+            <h1>{% block titulo %}{{ titulo }}{% endblock titulo %}<b>{% block subtitulo %}{{ subtitulo }}{% endblock %}</b></h1>
+        </div>
+
+        <div class="menu" id="show-menu">
+
+                <nav class="barra">
+                    <ul class="navegacion">
+                        <li class="menu-selected"><a href={% url 'home' %} > <i class="fas fa-home"></i> Inicio</a></li>
+
+                        <li class="menu-selected" id="">
+
+                <a href="{% url 'recursos' %}" class="padre">
+                    <i class="fa fa-sort-desc"></i>Recursos
+                </a></li>
+
+
+
+
+                        <!--<li><a href="#"> <i class="fa fa-sort-desc"> </i>Tutoriales</a></li>-->
+
+                        <li class="menu-selected"><a href="{% url 'blog' %}" class="text-menu-selected">
+                            <i class="fas fa-file-alt"></i>Blog</a></li>
+                        <li class="menu-selected"><a href="{% url 'contact' %}"> <i class="fas fa-headset"></i> Contacto</a></li>
+                    </ul>
+                </nav>
+
+        </div>
+
+        </div>
+        <div id="icon-menu">
+            <i class="fas fa-bars"></i>
+
+        </div>
+
+
+</header>
+
+<!--Portada-->
+
+<div class="container-all" id="move-content">
+{% block container %}
+
+
+<div class="article-container-cover" style="background-image: url('{% static "img/hdr-end-times-min.png"%}')" >
+
+
+
+    <div class="container-info-cover">
+        {% block flyer %}<h1>¡Los Eventos Finales se Acercan!</h1>{% endblock flyer %}
+        <p>{% block versiculo %}He aquí yo vengo pronto, y mi galardón conmigo, para recompensar </p>
+            <p>a cada uno según sea su obra. Apocalipsis 22:12{% endblock versiculo %}</p>
+    </div>
+
+</div>
+
+<div class="container-content">
+
+    <article>
+        {% block articulo %}
+
+
+      <div class="container">
+        <div class="row same-height justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="post-entry text-center">
+              <span class="post-category text-white bg-success mb-3">{{ post1.categoria }}</span>
+              <h1 class="mb-4"><a href="#">{{ post1.titulo |upper }}</a></h1>
+                <p>{{ post1.descripcion }}</p>
+              <div class="post-meta align-items-center text-center">
+                <img src="{{ post1.imagen_referencial.url }}" alt="Image" class="img-fluid">
+                  <br>
+                  <br>
+                <span class="d-inline-block mt-1">Escrito por {{ post1.autor }}</span>
+                <span>{{ post1.fecha_publicacion }}</span>
+                  <p>{{ post1.contenido | safe }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="container">
+        <div class="row same-height justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="post-entry text-center">
+              <span class="post-category text-white bg-success mb-3">{{ post2.categoria }}</span>
+              <h1 class="mb-4"><a href="#">{{ post2.titulo |upper }}</a></h1>
+                <p>{{ post2.descripcion }}</p>
+              <div class="post-meta align-items-center text-center">
+                <img src="{{ post2.imagen_referencial.url }}" alt="Image" class="img-fluid">
+                  <br>
+                  <br>
+                <span class="d-inline-block mt-1">Escrito por {{ post2.autor }}</span>
+                <span>{{ post2.fecha_publicacion }}</span>
+                  <p>{{ post2.contenido | safe }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+            {% endblock %}
+            <!-- news cards-->
+        <div class="news-cards">
+            <div>
+            <img src=" {{ post_general.imagen_referencial.url}}" alt="" />
+
+                <h3>{{ post_general}}</h3>
+                <p>{{ post_general.descripcion }}
+                </p>
+                <a href="{{ 'articulo' }}">learn more <i class="fas fa-angle-double-right"></i></a>
+            </div>
+            <div>
+            <img src="{% static  'img/biblia-min.jpg' %}" alt="" />
+
+                <h3>La biblia.</h3>
+                <p>
+                    La Biblia (del latín biblĭa, y este del griego βιβλία: biblía, «libros»
+                    es un conjunto de libros canónicos que en el judaísmo y el cristianismo se
+                    consideran producto de inspiración divina y un reflejo o registro de la relación entre Dios y la humanidad.
+                </p>
+                <a href="{{ 'articulo' }}">learn more <i class="fas fa-angle-double-right"></i></a>
+            </div>
+            <div>
+                <img src="{% static  'img/biblia-min.jpg' %}" alt="" />
+                <h3>La biblia.</h3>
+                <p>
+                    La Biblia (del latín biblĭa, y este del griego βιβλία: biblía, «libros»
+                    es un conjunto de libros canónicos que en el judaísmo y el cristianismo se
+                    consideran producto de inspiración divina y un reflejo o registro de la relación entre Dios y la humanidad.
+                </p>
+                <a href="{{ 'articulo' }}">learn more <i class="fas fa-angle-double-right"></i></a>
+            </div>
+
+        </div>
+
+    </article>
+
+
+
+
+    <div class="container-aside">
+        {% block aside %}
+
+        <aside>
+        <img src="{% static  'img/maranatha-min.jpg' %}" alt="" />
+
+            <h2>La Segunda Venida de Cristo</h2>
+            <p>Algunas cosas sobre el futuro no son absolutamente claras, y otras cosas, como : Cuando tiene lugar el arrebatamiento y La Segunda venida de Cristo, son tan claras como el día.</p>
+            <a href={{ 'segunda' }}><button>leer más</button></a>
+        </aside>
+
+        <aside>
+            <img src="{% static  'img/el-diezmo-en-el-nuevo-testamento-min.jpg' %}" alt="" />
+                <h2>¿El diezmo en el SEgundo testamento ?</h2>
+                <p>Los israelitas diezmaban “cada año”, y no cada mes o cada semana. “Indefectible-
+                    mente diezmarás... cada año” (Deuteronomio 14:22). </p>
+                    <a href={{ 'diezmo' }}><button>leer más</button></a>
+        </aside>
+
+        <aside>
+            <img src="{% static  'img/despues_de_la_tribulacion-min.jpg' %}" alt="" />
+
+            <h2>El rapto ¿antes o después de la tribulación?</h2>
+            <p>Dentro de la comunidad cristiana existe mucha polémica en cuanto a cuándo tendrá lugar el rapto de la iglesia. Aquí discutiremos dos posturas: 
+                la pretribulacional (que rapto sucede antes de la tribulación), y la postribulacional (que el rapto sucede después de la tribulación y en forma
+                multánea con la segunda venida de Jesús a la tierra).</p>
+                <a href={{ 'articulo' }}><button>leer más</button></a>
+
+        </aside>
+ {% endblock aside %}
+    </div>
+</div>
+
+    <!-- boton de ir hacia arriba-->
+    <div id="button-up">
+        <i class="fas fa-chevron-up"></i>
+
+    </div>
+
+
+
+<div class="container-footer">	
+
+    <footer>
+        <div class="logo-footer">
+            <img src="{% static  'img/4horsemen-min.jpg' %}" alt="" />
+
+        </div>
+
+        <div class="redes-footer">
+            <a href="https://www.facebook.com/MercadeRdelaFE"><i class="fab fa-facebook-f icon-redes-footer"></i></a>
+            <!--<a href="#"><i class="fab fa-google-plus-g icon-redes-footer"></i></a>-->
+            <a href="https://www.youtube.com/channel/UCPZp6HR9Qd6PfyEM0zMftCQ?view_as=subscriber"><i class="fab fa-youtube-square icon-redes-footer"></i></a>
+        </div>
+
+        <hr>
+        <h4>© 2020 Blog Escatologico - Todos los Derechos Reservados</h4>
+
+    </footer>
+</div>
+    </div>
+{% endblock container %}
+{% block scripts %}
+    <script src="{% static 'js/script.js'%}"></script>
+
+    {% endblock scripts %}
+{% endblock %}
+</body>
+</html>

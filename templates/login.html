@@ -1,0 +1,68 @@
+{% extends 'header_menu.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
+
+
+{% endblock %}
+
+{% block body %}
+    {% block header %}
+    <div class="header-content">
+
+            <div class="logo">
+                <h1>Blog<b>Escatologico</b></h1>
+            </div>
+
+            <div class="menu" id="show-menu">
+
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'home' %}"> <i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href={% url 'recursos' %} > <i class="fab fa-youtube"> </i>Recursos</a></li>
+                        <li class="menu-selected"><a href="{% url 'blog' %}" class="text-menu-selected">
+                            <i class="fas fa-file-alt"></i>Blog</a></li>
+                        <li><a href={% url 'contact' %} > <i class="fas fa-headset"></i> Contacto</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+
+        </div>
+
+        <div id="icon-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    {% endblock %}
+{% block content %}
+<div class="contenedor-form">
+        <div class="toggle">
+            <span> Crear Cuenta</span>
+        </div>
+
+        <div class="formulario">
+            <h2>Iniciar Sesión</h2>
+            <form action="#" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Nombre de usuario</label>
+                    {{ form.username }}
+
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    {{ form.password }}
+
+                </div>
+                <button type="submit" class="btn btn-success">Iniciar Sesion</button>
+                <!--<input type="text" placeholder="Usuario" required>
+                <input type="password" placeholder="Contraseña" required>
+                <input type="submit" value="Iniciar Sesión">-->
+            </form>
+        </div>
+</div>
+
+{% endblock %}
+{% endblock %}

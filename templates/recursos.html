@@ -1,0 +1,18 @@
+{% extends 'header_menu.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
+
+
+{% endblock %}
+
+
+{% block body %}
+    <div class= "container">
+    {% for objects in objects_list %}
+    {% endfor %}
+
+    </div>
+{% endblock %}
+   

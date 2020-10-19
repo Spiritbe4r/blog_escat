@@ -1,0 +1,87 @@
+{% extends 'header_menu.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
+
+
+{% endblock %}
+
+{% block body %}
+    {% block header %}
+    <div class="header-content">
+
+            <div class="logo">
+                <h1>Blog<b>Escatologico</b></h1>
+            </div>
+
+            <div class="menu" id="show-menu">
+
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'home' %}"> <i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href={% url 'recursos' %} > <i class="fab fa-youtube"> </i>Recursos</a></li>
+                        <li class="menu-selected"><a href="{% url 'blog' %}" class="text-menu-selected">
+                            <i class="fas fa-file-alt"></i>Blog</a></li>
+                        <li><a href={% url 'contact' %} > <i class="fas fa-headset"></i> Contacto</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+
+        </div>
+
+        <div id="icon-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    {% endblock %}
+{% block content %}
+
+<div class="contenedor">
+<br>
+<br>
+
+<form action="" method = "POST" class="form" novalidate>
+ <div class="form-header">
+                <h1 class="form-title">C<span>ontacto</span></h1>
+
+                </div>
+
+
+
+        <label class="form-label" for="exampleInputUsername">Nombre</label >
+        {{ form.name }}
+        {% for error in form.name.errors %}
+            <span style="Color:red;">This fields is required : {{ error }}</span>
+        {% endfor %}
+
+
+        <label class="form-label" for="exampleInputEmail">Email </label>
+        {{ form.email }}
+        {% for error in form.email.errors %}
+            <span style="Color:red;">This fields is required : {{ error }}}</span>
+        {% endfor %}
+
+        <label class="form-label" for="telephone">Telefono</label>
+        {{ form.subject }}
+        {% for error in form.subject.errors %}
+            <span style="Color:red;">This fields is required : {{ error }}</span>
+        {% endfor %}
+        <label class="form-label" for ="description"> Mensage</label>
+        {{ form.message }}
+
+    <hr/>
+
+    <input type="submit" value="Enviar" title="Enviar" class="btn-submit " aria-hidden="true"/>
+{% csrf_token %}
+</form>
+{% if submitted %}
+ <div class="alert alert-success" role="alert">
+   Your message was submitted successfully. Thank you.
+ </div>
+ {% endif %}
+    </div>
+
+{% endblock %}
+{% endblock %}

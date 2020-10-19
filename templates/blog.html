@@ -1,0 +1,274 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Escatologico</title>
+
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/articulos.css' %}">}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+</head>
+<body>
+
+    <!--Header - menu-->
+    <header>
+
+        <div class="header-content">
+
+            <div class="logo">
+                <h1>Blog<b>Escatologico</b></h1>
+            </div>
+
+            <div class="menu" id="show-menu">
+
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'home' %}"> <i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href={% url 'recursos' %}> <i class="fab fa-youtube"> </i>Recursos</a></li>
+                        <li class="menu-selected"><a href="{% url 'blog' %}" class="text-menu-selected">
+                            <i class="fas fa-file-alt"></i>Blog</a></li>
+                        <li><a href={% url 'contact' %}> <i class="fas fa-headset"></i> Contacto</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div id="ctn-icon-search">
+                <i class="fas fa-search" id="icon-search"></i>
+            </div>
+
+        </div>
+
+        <div id="icon-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+
+    </header>
+
+
+    <div id="ctn-bars-search">
+        <label for="inputSearch"></label><input type="text" id="inputSearch" placeholder="¿Qué deseas buscar?">
+    </div>
+
+    <ul id="box-search">
+        {% for post in posts %}
+        <li><a href={% url 'home' %}><i class="fas fa-search"></i>{{ post.categoria }}</a></li>
+
+    {% endfor %}
+    </ul>
+
+    <div id="cover-ctn-search"></div>
+
+
+    <!--Portada-->
+
+    <div class="container-all" id="move-content">
+
+    
+    <div class="blog-container-cover" style="background-image: url('{% static "img/hdr-end-times-min.png"%}')" >
+        <div class="container-info-cover">
+            <h1>¡Encuentra tu tema interes!</h1>
+        </div>
+    </div>
+
+    <div class="container-post">
+
+        <input type="radio" id="TODOS" name="categories" value="TODOS" checked>
+        <input type="radio" id="ESCATOLOGIA" name="categories" value="ESCATOLOGIA">
+        <input type="radio" id="ESTUDIOS BIBLICOS" name="categories" value="ESTUDIOS BIBLICOS">
+        <input type="radio" id="EVANGELIO" name="categories" value="EVANGELIO">
+        <input type="radio" id="NOTICIAS" name="categories" value="NOTICIAS">
+        <input type="radio" id="HISTORIA" name="categories" value="HISTORIA">
+        <input type="radio" id="APOLOGETICA" name="categories" value="APOLOGETICA">
+        <input type="radio" id="DEVOCIONALES" name="categories" value="DEVOCIONALES">
+
+        <div class="container-category">
+
+            <label for="TODOS">TODOS</label>
+            <label for="ESCATOLOGIA">ESCATOLOGIA</label>
+            <label for="ESTUDIOS BIBLICOS">ESTUDIOS BIBLICOS</label>
+            <label for="EVANGELIO">EVANGELIO</label>
+            <label for="NOTICIAS">NOTICIAS</label>
+            <label for="HISTORIA">HISTORIA</label>
+            <label for="APOLOGETICA">APOLOGETICA</label>
+            <label for="DEVOCIONALES">DEVOCIONALES</label>
+
+        </div>
+
+        <div class="posts">
+            {% if posts %}
+                {% for post in posts %}
+            <div class="post" data-category="{{ post.categoria}}">
+
+                <div class="ctn-img"><img src="{{ post.imagen_referencial.url }}" alt="" />
+                </div>
+                <h2 class="post-title">{{ post.titulo}}</h2>
+
+                <p class="description">{{ post.descripcion }}</p>
+
+                <p class="post-meta"> Escrito por
+                   <strong>{{ post.autor }}</strong>   el
+                    {{ post.fecha_publicacion }}</p>
+
+                <ul class="ctn-tag">
+                    <li>{{ post.categoria }}</li>
+
+                </ul>
+                <hr>
+                <a href={% url 'home' %} ><button>Leer más</button></a>
+
+
+            </div>
+                {% endfor %}
+            {% else %}
+            <h1>No existen posts registrados</h1>
+            {% endif %}
+
+            <!--
+            <div class="post" data-category="ESTUDIOS BIBLICOS">
+
+                
+                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
+                </div>
+                    
+                <h2>Encuentra algo que te interese</h2>
+                <span>26 febrero 2020 - 1:32 am</span>
+                <ul class="ctn-tag">
+                    <li>ESTUDIOS BIBLICOS</li>
+                </ul>
+                <a href=#><button>leer más</button></a>
+
+
+            </div>
+
+            <div class="post" data-category="EVANGELIO">
+
+                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
+                </div>
+                <h2>Encuentra algo </h2>
+                <span>26 febrero 2020 - 1:32 am</span>
+                <ul class="ctn-tag">
+                    <li>EVANGELIO</li>
+                </ul>
+                <a href=><button>leer más</button></a>
+
+            </div>
+
+            <div class="post" data-category="NOTICIAS">
+
+                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
+                </div>
+                <h2>Encuentra algo que te interese</h2>
+                <span>26 febrero 2020 - 1:32 am</span>
+                <ul class="ctn-tag">
+                    <li>NOTICIAS</li>
+                    
+                </ul>
+                <a href="#"><button>leer más</button></a>
+
+            </div>
+
+            <div class="post" data-category="HISTORIA">
+
+                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
+                </div>
+                <h2>Encuentra algo que </h2>
+                <span>26 febrero 2020 - 1:32 am</span>
+                <ul class="ctn-tag">
+                    <li>HISTORIA</li>
+                </ul>
+                <a href="#"><button>leer más</button></a>
+
+            </div>
+
+            <div class="post" data-category="APOLOGETICA">
+
+                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
+                </div>
+                <h2>Encuentra algo que te interese</h2>
+                <span>26 febrero 2020 - 1:32 am</span>
+                <ul class="ctn-tag">
+                    <li>APOLOGETICA</li>
+                </ul>
+                <a href="#"><button>leer más</button></a>
+
+            </div>
+
+            <div class="post" data-category="DEVOCIONALES ESTUDIOS BIBLICOS">
+
+                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
+                </div>
+                <h2>Encuentra algo que te </h2>
+                <span>26 febrero 2020 - 1:32 am</span>
+                <ul class="ctn-tag">
+                    <li>DEVOCIONALES</li>
+                    <li>ESTUDIOS BIBLICOS</li>
+                </ul>
+                <a href="#"><button>leer más</button></a>
+
+            </div>
+            <div class="post" data-category="APOLOGETICA">
+
+                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
+                </div>
+                <h2>Encuentra algo que te interese</h2>
+                <span>26 febrero 2020 - 1:32 am</span>
+                <ul class="ctn-tag">
+                    <li>APOLOGETICA</li>
+                </ul>
+                <a href="#"><button>leer más</button></a>
+     
+
+            </div>
+
+            -->
+
+
+
+
+        </div>
+
+    </div>
+
+    <!--Boton de ir hacia arriba-->
+    <div id="button-up">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+
+    <div class="container-footer">	
+
+        <footer>
+            <div class="logo-footer">
+                
+                <img src="{% static  'img/4horsemen-min.jpg' %}" alt="" />
+
+            </div>
+
+            <div class="redes-footer">
+                <a href="#"><i class="fab fa-facebook-f icon-redes-footer"></i></a>
+                <!--<a href="#"><i class="fab fa-google-plus-g icon-redes-footer"></i></a>-->
+                <a href="#"><i class="fab fa-instagram icon-redes-footer"></i></a>
+            </div>
+
+            <hr>
+            <h4>© 2020 Blog Escatologico - Todos los Derechos Reservados</h4>
+
+        </footer>
+
+
+        </div>
+
+    </div>
+        <script src="{% static 'js/script.js' %}"></script>
+
+
+</body>
+
+</html>
