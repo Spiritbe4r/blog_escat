@@ -1,29 +1,28 @@
 {% load static %}
+{% block header %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Blog Escatologico</title>
+    <title>{% block title %} Blog Escatologico {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-    {% block css %}
+    
     <link rel="stylesheet" href="{% static 'css/principal.css' %}">
     <link rel="stylesheet" href="{% static 'css/articulos.css' %}">
+    <link rel="stylesheet href={% static 'css/style.css' %}">
+  
 
-
-    {% endblock css %}
-
-
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 </head>
 <body>
 
-{% block content %}
 
 
  <!--Header - menu-->
  <header>
+
 
 
     <div class="header-content">
@@ -33,29 +32,38 @@
         </div>
 
         <div class="menu" id="show-menu">
-
-                <nav class="barra">
-                    <ul class="navegacion">
+                <nav class="navegacion">
+                    <ul class="menu2">
                         <li class="menu-selected"><a href={% url 'home' %} > <i class="fas fa-home"></i> Inicio</a></li>
 
-                        <li class="menu-selected" id="">
 
-                <a href="{% url 'recursos' %}" class="padre">
-                    <i class="fa fa-sort-desc"></i>Recursos
-                </a></li>
+                    <li class="enlace" id="perfil">
+                <a href="#perfil" class="padre">
+                    <i class="far fa-user"></i>Categorias
+                </a>
+                <div class="submenu">
+
+                    <a href="{% url 'todos' %}">Todos</a>
+                    <a href="{% url 'escatologia' %}">Escatologia</a>
+                    <a href="{% url 'evangelio' %}">Evangelio</a>
+                    <a href="{% url 'noticias' %}">Noticias</a>
+                    <a href="{% url 'apologetica' %}">Apologetica</a>
+                    <a href="{% url 'historia' %}">Historia</a>
+                    <a href="{% url 'devocionales' %}">Devocionales</a>
+                    <a href="{% url 'estudios_biblicos' %}">Estudios</a>
 
 
-
-
-                        <!--<li><a href="#"> <i class="fa fa-sort-desc"> </i>Tutoriales</a></li>-->
-
-                        <li class="menu-selected"><a href="{% url 'blog' %}" class="text-menu-selected">
-                            <i class="fas fa-file-alt"></i>Blog</a></li>
+                        <li class="menu-selected">
+                            <a href="{% url 'blog' %}" class="text-menu-selected">
+                            <i class="fas fa-file-alt"></i>Blog</a>
+                        </li>
                         <li class="menu-selected"><a href="{% url 'contact' %}"> <i class="fas fa-headset"></i> Contacto</a></li>
+                        <li class="menu-selected"><a href="{% url 'contact' %}"> <i class="fas fa-headset"></i> Login</a></li>
+
                     </ul>
                 </nav>
 
-        </div>
+            </div>
 
         </div>
         <div id="icon-menu">
@@ -63,13 +71,13 @@
 
         </div>
 
-
+{% endblock %}
 </header>
 
 <!--Portada-->
 
 <div class="container-all" id="move-content">
-{% block container %}
+{% block portada %}
 
 
 <div class="article-container-cover" style="background-image: url('{% static "img/hdr-end-times-min.png"%}')" >
@@ -81,24 +89,27 @@
         <p>{% block versiculo %}He aquí yo vengo pronto, y mi galardón conmigo, para recompensar </p>
             <p>a cada uno según sea su obra. Apocalipsis 22:12{% endblock versiculo %}</p>
     </div>
-
+        
+{% endblock portada %}
 </div>
 
 <div class="container-content">
 
     <article>
-        {% block articulo %}
+{% block cuerpo %}
 
 
       <div class="container">
         <div class="row same-height justify-content-center">
           <div class="col-md-12 col-lg-10">
             <div class="post-entry text-center">
-              <span class="post-category text-white bg-success mb-3">{{ post1.categoria }}</span>
-              <h1 class="mb-4"><a href="#">{{ post1.titulo |upper }}</a></h1>
+            
+              <h1 class="mb-4"><a href={% url 'detalle_post' post1.slug %}}">{{ post1.titulo |upper }}</a></h1>
+                
                 <p>{{ post1.descripcion }}</p>
               <div class="post-meta align-items-center text-center">
                 <img src="{{ post1.imagen_referencial.url }}" alt="Image" class="img-fluid">
+                <span class="post-category text-white bg-success mb-3">{{ post1.categoria }}</span>
                   <br>
                   <br>
                 <span class="d-inline-block mt-1">Escrito por {{ post1.autor }}</span>
@@ -113,15 +124,19 @@
         <div class="row same-height justify-content-center">
           <div class="col-md-12 col-lg-10">
             <div class="post-entry text-center">
-              <span class="post-category text-white bg-success mb-3">{{ post2.categoria }}</span>
-              <h1 class="mb-4"><a href="#">{{ post2.titulo |upper }}</a></h1>
+
+              <h1 class="mb-4"><a href={% url 'detalle_post' post2.slug %}>{{ post2.titulo |upper }}</a></h1>
                 <p>{{ post2.descripcion }}</p>
               <div class="post-meta align-items-center text-center">
                 <img src="{{ post2.imagen_referencial.url }}" alt="Image" class="img-fluid">
-                  <br>
+
+                  <span class="post-category text-white bg-success mb-3">{{ post2.categoria }}</span>
+                   <br>
                   <br>
                 <span class="d-inline-block mt-1">Escrito por {{ post2.autor }}</span>
-                <span>{{ post2.fecha_publicacion }}</span>
+
+                <span>El {{ post2.fecha_publicacion }}</span>
+
                   <p>{{ post2.contenido | safe }}</p>
               </div>
             </div>
@@ -131,8 +146,8 @@
 
 
 
-
-            {% endblock %}
+{% block cards%}
+            
             <!-- news cards-->
         <div class="news-cards">
             <div>
@@ -164,7 +179,7 @@
                 </p>
                 <a href="{{ 'articulo' }}">learn more <i class="fas fa-angle-double-right"></i></a>
             </div>
-
+{% endblock cards %}
         </div>
 
     </article>
@@ -203,6 +218,7 @@
         </aside>
  {% endblock aside %}
     </div>
+{% endblock cuerpo %}
 </div>
 
     <!-- boton de ir hacia arriba-->
@@ -210,9 +226,19 @@
         <i class="fas fa-chevron-up"></i>
 
     </div>
+<div class="formulario">
 
-
-
+             <h3 class="footer-heading mb-4">SUSCRÍBETE</h3>
+             <form action="{% url 'suscribirse' %}" method="post" class="form-footer-subscribe">
+               {% csrf_token %}
+               <div class="correo_e">
+                   <i class="fas fa-envelope"></i>
+                 <input type="text" class="texto"  name="correo">
+                 <button type="submit" class="boton" >SUSCRIBIRSE</button>
+               </div>
+             </form>
+        </div>
+uy
 <div class="container-footer">	
 
     <footer>
@@ -222,9 +248,9 @@
         </div>
 
         <div class="redes-footer">
-            <a href="https://www.facebook.com/MercadeRdelaFE"><i class="fab fa-facebook-f icon-redes-footer"></i></a>
+            <a href='{{ sociales.facebook }}' target="_blank" ><i class="fab fa-facebook-f icon-redes-footer"></i></a>
             <!--<a href="#"><i class="fab fa-google-plus-g icon-redes-footer"></i></a>-->
-            <a href="https://www.youtube.com/channel/UCPZp6HR9Qd6PfyEM0zMftCQ?view_as=subscriber"><i class="fab fa-youtube-square icon-redes-footer"></i></a>
+            <a href='{{ sociales.twitter }}' target="_blank" ><i class="fab fa-youtube-square icon-redes-footer"></i></a>
         </div>
 
         <hr>
@@ -233,11 +259,10 @@
     </footer>
 </div>
     </div>
-{% endblock container %}
-{% block scripts %}
-    <script src="{% static 'js/script.js'%}"></script>
 
-    {% endblock scripts %}
-{% endblock %}
+    <script src="{% static 'js/script.js'%}"></script>
+{% block extrajs %}
+{% endblock extrajs %}
+
 </body>
 </html>

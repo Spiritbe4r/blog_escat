@@ -1,61 +1,53 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Escatologico</title>
 
-    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-    {% block css %}
-    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
-
-    {% endblock %}
+ <!--Header - menu-->
+ <header>
 
 
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-</head>
-<body style="background-image: url('{% static "img/generales-min.jpg"%}')" >
+    <div class="header-content">
+
+        <div class="logo">
+            <h1>{% block titulo %}{{ titulo }}{% endblock titulo %}<b>{% block subtitulo %}{{ subtitulo }}{% endblock %}</b></h1>
+        </div>
+
+        <div class="menu" id="show-menu">
+                <nav class="navegacion">
+                    <ul class="menu2">
+                        <li class="menu-selected"><a href={% url 'home' %} > <i class="fas fa-home"></i> Inicio</a></li>
 
 
-    <!--Header - menu-->
-    <header>
-    {% block header %}
+                    <li class="enlace" id="perfil">
+                <a href="#perfil" class="padre">
+                    <i class="far fa-user"></i>Categorias
+                </a>
+                <div class="submenu">
 
-        <div class="header-content">
+                    <a href="{% url 'todos' %}">Todos</a>
+                    <a href="{% url 'escatologia' %}">Escatologia</a>
+                    <a href="{% url 'evangelio' %}">Evangelio</a>
+                    <a href="{% url 'noticias' %}">Noticias</a>
+                    <a href="{% url 'apologetica' %}">Apologetica</a>
+                    <a href="{% url 'historia' %}">Historia</a>
+                    <a href="{% url 'devocionales' %}">Devocionales</a>
+                    <a href="{% url 'estudios_biblicos' %}">Estudios</a>
 
-            <div class="logo">
-                <h1>Blog<b>Escatologico</b></h1>
-            </div>
 
-            <div class="menu" id="show-menu">
+                        <li class="menu-selected">
+                            <a href="{% url 'blog' %}" class="text-menu-selected">
+                            <i class="fas fa-file-alt"></i>Blog</a>
+                        </li>
+                        <li class="menu-selected"><a href="{% url 'contact' %}"> <i class="fas fa-headset"></i> Contacto</a></li>
 
-                <nav>
-                    <ul>
-                        <li><a href="{% url 'home' %}"> <i class="fas fa-home"></i> Inicio</a></li>
-                        <li><a href={% url 'recursos' %} > <i class="fab fa-youtube"> </i>Recursos</a></li>
-                        <li class="menu-selected"><a href="{% url 'blog' %}" class="text-menu-selected">
-                            <i class="fas fa-file-alt"></i>Blog</a></li>
-                        <li><a href={% url 'contact' %} > <i class="fas fa-headset"></i> Contacto</a></li>
                     </ul>
                 </nav>
 
             </div>
 
-
         </div>
-
         <div id="icon-menu">
             <i class="fas fa-bars"></i>
+
         </div>
-    {% endblock %}
-    </header>
-    {% block content %}
-    {% endblock %}
 
+</header>
 
-
-<script src={% static 'js/script.js' %}></script>
-
-</body>
-</html>

@@ -1,0 +1,88 @@
+
+{% extends 'home.html' %}
+{% load static %}
+{% block titulo %} {{ categoria |upper }}{% endblock titulo %}
+
+{% block portada %}
+<div class="article-container-cover" style="background-image: url('{{ categoria.imagen_referencial.url }}')" >
+</div>
+{% endblock portada %}
+{% block cuerpo %}
+      <div class="container">
+        <div class="row same-height justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="post-entry text-center">
+
+              <h1 class="mb-4"><a href="{{ request.build_absolute.url }}">{{ categoria | upper }}</a></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <section class="site-section py-lg">
+      <div class="container">
+
+        <div class="row blog-entries element-animate mb-5">
+
+          <div class="col-md-12 col-lg-12 main-content">
+            {% for post in posts %}
+              <div class="entry2 mb-5">
+
+
+                <h2><a href="{% url 'detalle_post' post.slug %}">{{ post.titulo }}</a></h2>
+                  <p>{{ post.descripcion }}</p>
+                  <a href="{% url 'detalle_post' post.slug %}"><img src="{{ post.imagen_referencial.url }}" alt="Image" class="img-fluid rounded"></a>
+                  <br/>
+                  <br/>
+                <div class="post-meta align-items-center text-left clearfix">
+
+              <p class="post-category text-white bg-primary mb-3">Categoría : <strong>{{ post.categoria | lower | capfirst}}</strong></p>
+
+
+
+                  <span class="d-inline-block mt-1">Publicado por <strong><a href="#">{{ post.autor }} </a></strong></span>
+                  <span> {{ post.fecha_publicacion }}</span>
+                    <p>{{ post.contenido | safe }}</p>
+                </div>
+
+              </div>
+            {% endfor %}
+
+                <div class="pagination">
+                  Página {{ posts.number }} de <span class="pagination-number pagination-current">{{ posts.paginator.num_pages }}</span>
+                  {% if posts.has_previous %}
+                  <li>
+
+
+                  <a class="pagination-action" href="?page={{ posts.previous_page_number }}">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i> </a>
+        <a class="pagination-action" href="?page={{ posts.previous_page_number }}">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
+
+                  {% endif %}
+
+                  {% if posts.has_next %}
+
+
+
+                      <a class="pagination-action" href="?page={{ posts.next_page_number }}">
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+        <a class="pagination-action" href="?page={{ posts.next_page_number }}">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+        </a>
+                  </li>
+                  {% endif %}
+                </div>
+
+
+          </div>
+
+
+          <!-- END main-content -->
+
+        </div>
+      </div>
+    </section>
+{% endblock cuerpo %}

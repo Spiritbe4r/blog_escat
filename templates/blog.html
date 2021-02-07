@@ -108,7 +108,7 @@
 
                 <div class="ctn-img"><img src="{{ post.imagen_referencial.url }}" alt="" />
                 </div>
-                <h2 class="post-title">{{ post.titulo}}</h2>
+                <h2 class="post-title"><strong>{{ post.titulo}}</strong></h2>
 
                 <p class="description">{{ post.descripcion }}</p>
 
@@ -121,7 +121,7 @@
 
                 </ul>
                 <hr>
-                <a href={% url 'home' %} ><button>Leer más</button></a>
+                <a href="{% url 'detalle_post' post.slug %}" ><button>Leer más</button></a>
 
 
             </div>
@@ -130,104 +130,7 @@
             <h1>No existen posts registrados</h1>
             {% endif %}
 
-            <!--
-            <div class="post" data-category="ESTUDIOS BIBLICOS">
 
-                
-                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
-                </div>
-                    
-                <h2>Encuentra algo que te interese</h2>
-                <span>26 febrero 2020 - 1:32 am</span>
-                <ul class="ctn-tag">
-                    <li>ESTUDIOS BIBLICOS</li>
-                </ul>
-                <a href=#><button>leer más</button></a>
-
-
-            </div>
-
-            <div class="post" data-category="EVANGELIO">
-
-                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
-                </div>
-                <h2>Encuentra algo </h2>
-                <span>26 febrero 2020 - 1:32 am</span>
-                <ul class="ctn-tag">
-                    <li>EVANGELIO</li>
-                </ul>
-                <a href=><button>leer más</button></a>
-
-            </div>
-
-            <div class="post" data-category="NOTICIAS">
-
-                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
-                </div>
-                <h2>Encuentra algo que te interese</h2>
-                <span>26 febrero 2020 - 1:32 am</span>
-                <ul class="ctn-tag">
-                    <li>NOTICIAS</li>
-                    
-                </ul>
-                <a href="#"><button>leer más</button></a>
-
-            </div>
-
-            <div class="post" data-category="HISTORIA">
-
-                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
-                </div>
-                <h2>Encuentra algo que </h2>
-                <span>26 febrero 2020 - 1:32 am</span>
-                <ul class="ctn-tag">
-                    <li>HISTORIA</li>
-                </ul>
-                <a href="#"><button>leer más</button></a>
-
-            </div>
-
-            <div class="post" data-category="APOLOGETICA">
-
-                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
-                </div>
-                <h2>Encuentra algo que te interese</h2>
-                <span>26 febrero 2020 - 1:32 am</span>
-                <ul class="ctn-tag">
-                    <li>APOLOGETICA</li>
-                </ul>
-                <a href="#"><button>leer más</button></a>
-
-            </div>
-
-            <div class="post" data-category="DEVOCIONALES ESTUDIOS BIBLICOS">
-
-                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
-                </div>
-                <h2>Encuentra algo que te </h2>
-                <span>26 febrero 2020 - 1:32 am</span>
-                <ul class="ctn-tag">
-                    <li>DEVOCIONALES</li>
-                    <li>ESTUDIOS BIBLICOS</li>
-                </ul>
-                <a href="#"><button>leer más</button></a>
-
-            </div>
-            <div class="post" data-category="APOLOGETICA">
-
-                <div class="ctn-img"><img src="{% static  'img/the_bowls_min.jpg' %}" alt="" />
-                </div>
-                <h2>Encuentra algo que te interese</h2>
-                <span>26 febrero 2020 - 1:32 am</span>
-                <ul class="ctn-tag">
-                    <li>APOLOGETICA</li>
-                </ul>
-                <a href="#"><button>leer más</button></a>
-     
-
-            </div>
-
-            -->
 
 
 

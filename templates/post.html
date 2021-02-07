@@ -1,0 +1,182 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %} {{ post.titulo |upper }} | BLOG.DEV {% endblock title %}
+
+{% block cuerpo %}
+    
+      
+
+    <div class="container">
+        <div class="row same-height justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="post-entry text-center">
+            
+              <h1 class="mb-4"><a href="{% url 'detalle_post' post.slug %}}">{{ post.titulo |upper }}</a></h1>
+                
+                <p>{{ post1.descripcion }}</p>
+              <div class="post-meta align-items-center text-center">
+                <img src="{{ post.imagen_referencial.url }}" alt="Image" class="img-fluid">
+                <span class="post-category text-white bg-success mb-3">{{ post.categoria }}</span>
+                  <br>
+                  <br>
+                <span class="d-inline-block mt-1">Escrito por {{ post.autor }}</span>
+                <span>{{ post.fecha_publicacion }}</span>
+                  <p>{{ post.contenido | safe }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <section class="site-section py-lg">
+      <div class="container">
+
+        <div class="row blog-entries element-animate">
+
+          <div class="col-md-12 col-lg-8 main-content">
+
+            <div class="post-content-body">
+              {{ post.contenido |safe }}
+            </div>
+          </div>
+
+          <!-- END main-content -->
+          
+          
+    
+        </div>
+      </div>
+    </section>
+
+
+     <!-- Card Banner 1-->
+    <section class="cards-banner-one">
+      <div class="content">
+        <h2>Lorem, ipsum dolor.</h2>
+        <!-- lorem 20 -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat maxime facilis quasi alias illo, fugiat
+          cupiditate porro dolores tenetur delectus!</p>
+        <a href="#" class="btn">Learn More<i class="fas fa-chevron-right"></i></a>
+      </div>
+    </section>
+
+    <!-- NEWS CARDS -->
+    <div class="news-cards">
+      <div>
+        <img src="img/news1.jpg" alt="" />
+        <h3>Lorem, ipsum dolor.</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam dolore fugit esse corporis nesciunt minima
+          doloremque modi mollitia rerum, similique optio eligendi itaque amet qui ullam vel incidunt asperiores fuga?
+        </p>
+        <a href="#">Learn More <i class="fas fa-angle-double-right"></i></a>
+      </div>
+      <div>
+        <img src="img/news2.jpg" alt="" />
+        <h3>Lorem, ipsum dolor.</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam dolore fugit esse corporis nesciunt minima
+          doloremque modi mollitia rerum, similique optio eligendi itaque amet qui ullam vel incidunt asperiores fuga?
+        </p>
+        <a href="#">Learn More <i class="fas fa-angle-double-right"></i></a>
+      </div>
+      <div>
+        <img src="img/news3.jpg" alt="" />
+        <h3>Lorem, ipsum dolor.</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam dolore fugit esse corporis nesciunt minima
+          doloremque modi mollitia rerum, similique optio eligendi itaque amet qui ullam vel incidunt asperiores fuga?
+        </p>
+        <a href="#">Learn More <i class="fas fa-angle-double-right"></i></a>
+      </div>
+
+    </div>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="mb-5">OTROS POST</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+
+            <div class="post-entry text-center">
+
+              <h1 class="mb-4"><a href={% url 'detalle_post' post1.slug %}}">{{ post1.titulo |upper }}</a></h1>
+
+                <p>{{ post1.descripcion }}</p>
+              <div class="post-meta align-items-center text-center">
+                <img src="{{ post1.imagen_referencial.url }}" alt="Image" class="img-fluid">
+                <span class="post-category text-white bg-success mb-3">{{ post1.categoria }}</span>
+                  <br>
+                  <br>
+                <span class="d-inline-block mt-1">Escrito por {{ post1.autor }}</span>
+                <span>{{ post1.fecha_publicacion }}</span>
+                  <p>{{ post1.contenido | safe }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+
+
+          <div class="col-md-6 col-lg-4">
+            <div class="entry2 mb-5">
+
+              <h1 class="mb-4"><a href={% url 'detalle_post' post2.slug %}}">{{ post2.titulo |upper }}</a></h1>
+
+                <p>{{ post2.descripcion }}</p>
+              <div class="post-meta align-items-center text-center">
+                <img src="{{ post2.imagen_referencial.url }}" alt="Image" class="img-fluid">
+                <span class="post-category text-white bg-success mb-3">{{ post2.categoria }}</span>
+                  <br>
+                  <br>
+                <span class="d-inline-block mt-1">Escrito por {{ post2.autor }}</span>
+                <span>{{ post2.fecha_publicacion }}</span>
+                  <p>{{ post2.contenido | safe }}</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+              <div class="entry2 mb-5">
+
+              <h1 class="mb-4"><a href={% url 'detalle_post' post3.slug %}}">{{ post3.titulo |upper }}</a></h1>
+
+                <p>{{ post1.descripcion }}</p>
+              <div class="post-meta align-items-center text-center">
+                <img src="{{ post3.imagen_referencial.url }}" alt="Image" class="img-fluid">
+                <span class="post-category text-white bg-success mb-3">{{ post3.categoria }}</span>
+                  <br>
+                  <br>
+                <span class="d-inline-block mt-1">Escrito por {{ post3.autor }}</span>
+                <span>{{ post3.fecha_publicacion }}</span>
+                  <p>{{ post3.contenido | safe }}</p>
+              </div>
+
+            </div>
+          </div>
+          </div>
+
+
+    <div class="container">
+      <div id="disqus_thread"></div>
+      <script>
+
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blog-dev2.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    </section>
+{% endblock cuerpo %}

@@ -43,7 +43,7 @@ header{
     color: #cc2b0e;
 }
 
-/*
+
 .menu {
     height: 80px;
     margin-right: 60px;
@@ -72,23 +72,12 @@ header{
     content: '';
     width: 100%;
     height: 4px;
+    background: #46a2fd;
     position: absolute;
     top: 0;
     left: 0;
 }
 
-.menu-selected:before{
-
-    background: #cc2b0e;
-    top: 50%;
-    color: white;
-    text-decoration: none;
-    line-height: 15px;
-    font-size: 10px;
-    margin-top: 20px;
-    align-items: center;
-
-}
 .menu nav ul li a{
     color: #777777;
     font-size: 18px;
@@ -96,97 +85,17 @@ header{
 }
 
 .menu nav ul li a:hover{
-    color: #cc2b0e;
+    color: #46a2fd;
 }
 
 .menu .text-menu-selected{
-    color: #cc2b0e;
+    color: #46a2fd;
 }
 
 .menu nav ul li a i{
     display: none;
 }
-*/
 
-/* parte 2*/
-
-
-.menu {
-  height: 80px;
-  margin-right: 60px;
-}
-
-.menu nav {
-  height: 100%;
-}
-
-.menu nav ul {
-  height: 100%;
-  display: flex;
-  list-style: none;
-}
-
-.menu nav ul li {
-  height: 100%;
-  margin: 0px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-
-.menu nav ul li a::after{
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%) scaleX(0);
-    -webkit-transform: translateX(-50%)scaleX(0);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-transition: transform 250ms;
-    transition: transform 250ms ;
-    width: 100%;
-    height: 4px;
-    background-color:  rgba(255, 0, 0, 0.938);
-}
-
-.menu nav ul li a:hover:after{
-    -webkit-transform: translateX(-50%) scaleX(1);
-    transform: translateX(-50%) scaleX(1);}
-
-
-
-
-/*
-
-.menu-selected:before {
-  content: "";
-  width: 100%;
-  height: 4px;
-  background: rgba(255, 0, 0, 0.938);
-  position: absolute;
-
-}*/
-
-.menu nav ul li a {
-  color: #777777;
-  font-size: 19px;
-  transition: color 300ms;
-}
-
-.menu nav ul li a:hover {
-  color: rgba(255, 0, 0, 0.938);
-}
-
-.menu .text-menu-selected {
-  color: rgba(255, 0, 0, 0.938);
-}
-
-.menu nav ul li a i {
-  display: none;
-}
 #icon-menu{
     width: 50px;
     height: 50px;
@@ -229,7 +138,7 @@ header{
 }
 
 #ctn-icon-search i:hover{
-    color: #cc2b0e;
+    color: #46a2fd;
 }
 
 
@@ -291,6 +200,7 @@ header{
     display: none;
 }
 
+
 /* boton de ir arriba */
 
 #button-up{
@@ -318,7 +228,7 @@ header{
 }
 
 
-/*Footer - pie de pagina*/
+/*Footer - pie de base*/
 
 .container-footer{
     width: 100%;
@@ -424,7 +334,96 @@ footer .redes-footer .fa-youtube-square:hover{
 .news-cards a:hover {
     text-decoration: underline;
 }
+
+/* BLUE THEME */
+
+.pagination {
+    margin-top: 1em;
+    text-align: center;
+
+
+
+}
+
+.pagination a {
+    text-decoration: none;
+}
+
+.pagination-number {
+    padding: 0.5em 0.8em;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #6D85C7;
+}
+
+.pagination-number:hover,
+.pagination-current {
+    background-color: #3354AA;
+}
+
+.pagination-action {
+    margin: 0 0.1em;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    color: #B9B9B9;
+    font-size: 1.3em;
+}
+
+.pagination-action:hover,
+.pagination-previous,
+.pagination-next {
+    color: #3354AA;
+}
+
 /* Formulario */
+.formulario {
+  background-color: #fafafafa;
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px solid #ccc;
+    border-radius: 1em;
+  /* IMPORTANTE */
+  text-align: center;
+}
+
+.correo_e{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.fa-envelope{
+    /*background:#cc2b0e;*/
+    background:#cc2b0e;
+    color: #ffff;
+    width:50px;
+    line-height:50px;
+    text-align:center;
+    font-size:30px;
+
+}
+
+.texto, .boton{
+    border: 0;
+    outline:0;
+    transition:0.5s;
+}
+.texto{
+    width:0px;
+    font-size:20px;
+
+    background-color: #f4ffd9;
+}
+.boton{
+    padding:18px;
+    background:#cc2b0e;
+    color: #fff;
+    cursor:pointer;
+}
+.correo_e:hover> .texto,
+.correo_e:focus{
+    padding:10px;
+    width:300px;
+}
 
 /* menu*/
 
@@ -602,5 +601,6 @@ a {
                 grid-template-columns: 1fr;
             }
         }
+        
 
 }

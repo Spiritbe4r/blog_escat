@@ -21,7 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'flywithmee20@gmail.com'
+EMAIL_HOST_PASSWORD = 'gloriaacristo1'
+EMAIL_PORT = 587
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'q3h+7)v(z5cd&4-zbuo!+f2h829ed+6a_iany^8k+^f&#!cms$'
 
@@ -41,11 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'django.contrib.sites',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'apps.pagina',
+    'aplicaciones.base',
 ]
 
 MIDDLEWARE = [
@@ -82,10 +86,13 @@ WSGI_APPLICATION = 'blog_escat.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'blog',
+        'USER': 'ronald',
+        'PASSWORD': 'Cuymagic321#',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
@@ -135,7 +142,7 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-AUTH_USER_MODEL = 'pagina.User'
+AUTH_USER_MODEL = 'base.User'
 AUTHENTICATION_BACKENDS = [
 
     # Needed to login by username in Django admin, regardless of `allauth`
