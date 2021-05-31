@@ -1,0 +1,26 @@
+{% load static %}
+
+
+ <!-- news cards-->
+        <div class="news-cards">
+            <div>
+            <img src="{{ post_todos.imagen_referencial.url }}" alt="" />
+
+                <h3>{{ post_todos.titulo}}</h3>
+                <p>{{ post_todos.descripcion }}
+                </p>
+                <h4>{{ post_todos.categoria}}</h4>
+                <a href="{% url 'blog:detalle_post' post_todos.slug %}">learn more <i class="fas fa-angle-double-right"></i></a>
+            </div>
+            <div>
+            <img src="{{ post_escatologia.imagen_referencial.url }}" alt="" />
+
+                <h3>{{ post_escatologia.titulo}}.</h3>
+                <p>{{ post_escatologia.descripcion }}
+                </p>
+                <h4>{{ post_escatologia.categoria}}</h4>
+                <a href="{% url 'blog:detalle_post' post_escatologia.slug %}">learn more <i class="fas fa-angle-double-right"></i></a>
+            </div>
+            
+            
+        </div>

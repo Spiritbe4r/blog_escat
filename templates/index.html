@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+{% block content %}
+<article>
+
+
+        <div class="container">
+          <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+              <div class="post-entry text-center">
+
+                <h2 class="mb-4"><a href="{% url 'blog:detalle_post' principal.slug %}">{{ principal.titulo |upper }}</a></h2>
+
+                <p>{{ principal.descripcion }}</p>
+                <div class="post-meta align-items-center text-center">
+                  <img src="{{ principal.imagen_referencial.url }}" alt="Image" class="img-fluid">
+                  <span class="post-category text-white bg-success mb-3">{{ principal.categoria }}</span>
+                  <br>
+                  <br>
+                  <span class="d-inline-block mt-1">Escrito por {{ principal.autor }}</span>
+                  <span>{{ principal.fecha_publicacion }}</span>
+                  <p>{{ principal.contenido | safe }}</p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+              <div class="post-entry text-center">
+
+                <h2 class="mb-4"><a href="{% url 'blog:detalle_post' post1.slug %}">{{ post1.titulo |upper }}</a></h2>
+                <p>{{ post1.descripcion }}</p>
+                <div class="post-meta align-items-center text-center">
+                  <img src="{{ post1.imagen_referencial.url }}" alt="Image" class="img-fluid">
+
+                  <span class="post-category text-white bg-success mb-3">{{ post1.categoria }}</span>
+                  <br>
+                  <br>
+                  <span class="d-inline-block mt-1">Escrito por {{ post1.autor }}</span>
+
+                  <span>El {{ post1.fecha_publicacion }}</span>
+
+                  <p>{{ post1.contenido | safe }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <hr>
+        <br>
+        <h2>ULTIMOS POSTS</h2>
+        <br>
+          
+        {% include 'cards.html' %}
+      </article>
+
+      {% include 'vtc/sidebar.html' %}
+{% endblock content %}

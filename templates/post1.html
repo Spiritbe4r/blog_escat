@@ -1,0 +1,155 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %} {{ post.titulo |upper }} | BLOG.DEV {% endblock title %}
+
+{% block body %}
+    <body>
+    {% include 'vtc/header.html' %}
+<div class="container-all" id="move-content">
+{% block portada %}
+
+
+<div class="article-container-cover" style="background-image: url('{% static 'img/despues_de_la_tribulacion-min.jpg' %}')" >
+
+
+
+    <div class="container-info-cover">
+        {% block flyer %}<h1>¡Los Eventos Finales se Acercan!</h1>{% endblock flyer %}
+        <p>{% block versiculo %}He aquí yo vengo pronto, y mi galardón conmigo, para recompensar </p>
+            <p>a cada uno según sea su obra. Apocalipsis 22:12{% endblock versiculo %}</p>
+    </div>
+
+{% endblock portada %}
+</div>
+
+<div class="container-content">  
+
+<article>
+      
+
+    <div class="container">
+        <div class="row same-height justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="post-entry text-center">
+            
+              <h2 ><a href="{% url 'blog:detalle_post' post.slug %}">{{ post.titulo |upper }}</a></h2>
+                
+                <p>{{ post.descripcion }}</p>
+              <div class="post-meta align-items-center text-center">
+                <img src="{{ post.imagen_referencial.url }}" alt="Image" class="img-fluid">
+                <span class="post-category text-white bg-success mb-3">{{ post.categoria }}</span>
+                  <br>
+                  <br>
+                <span class="d-inline-block mt-1">Escrito por RAAAAA{{ post.autor }}</span>
+                <span>{{ post.fecha_publicacion }}</span>
+                <p>Views: </p>
+                  <p>{{ post.contenido | safe }}</p>
+                   <form action="{% url 'blog:like-post' %}" method="post" class="ui form">
+                {% csrf_token %}
+                <input type="hidden" name="post_id" value="{{ post.id }}">
+                
+                {% if user not in post.likes.all %}
+                  <button class="like btn" type="submit">
+                  <span id="icon"><i class="far fa-thumbs-up"></i></span>
+                  <span class="ml-2" id="count">{{ post.likes.all.count }}</span>Likes
+                  </button>
+                  {% else %}
+                  <button class="like btn" type="submit">
+                  <span id="icon"><i class="fa fa-thumbs-o-down"></i></span>
+                  <span class="ml-2" id="count">{{ post.likes.all.count }}</span>Likes
+                  </button>
+                  </button>
+                  
+                {% endif %}
+                  
+                </form>
+                <strong>Likes:{{post.likes.all.count}}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+      <div id="disqus_thread"></div>
+      <script>
+
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blog-dev2.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    </div>
+
+
+
+<div class="container-aside">
+
+
+        <aside>
+        <img src="{{ post1.imagen_referencial.url }}" alt="" />
+
+            <h2>{{ post1.titulo  }}</h2>
+            <p>{{ post1.descripcion }}</p>
+            <a href="{% url 'blog:detalle_post' post1.slug %}"><button>leer más</button></a>
+        </aside>
+        
+
+        <aside>
+        <img src="{{ post2.imagen_referencial.url }}" alt="" />
+        
+        
+            <h2 class="mb-4"><a href="{% url 'blog:detalle_post' post2.slug %}">{{ post2.titulo }}</a></h2>
+                
+                <p>{{ post2.descripcion }} </p>
+                    <a href="{% url 'blog:detalle_post' post2.slug %}"><button>leer más</button></a>
+        </aside>
+
+        <aside>
+            <img src="{{ post3.imagen_referencial.url }}" alt="" />
+
+            <h2>{{ post3.titulo }}</h2>
+            <p>{{ post3.descripcion }}</p>
+                <a href="{% url 'blog:detalle_post' post3.slug %}"><button>leer más</button></a>
+
+        </aside>
+</div>
+
+ </article>
+
+ </div>
+    
+
+    
+    
+
+
+    
+ 
+    
+    </div>
+       </section>
+  <!-- Footer -->
+  {% include 'footer.html' %}
+  <!-- Block javascript -->
+  {% block javascript %}
+  <script src="{% static 'js/script.js'%}"></script>
+
+  {% endblock javascript %}  
+   
+
+  </body>
+{% endblock body %}

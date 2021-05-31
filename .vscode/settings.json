@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "e:\\Proyectos\\blog_escat\\djangin\\Scripts\\python.exe"
+    "python.pythonPath": "e:\\Proyectos\\blog_escat\\djangin\\Scripts\\python.exe",
+    "python.formatting.provider": "black"
 }

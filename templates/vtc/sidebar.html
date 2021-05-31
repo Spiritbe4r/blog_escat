@@ -1,0 +1,31 @@
+{% load static %}
+<div class="container-aside">
+
+        <aside>
+        <img src="{{ post2.imagen_referencial.url }}" alt="" />
+
+            <h2>{{ post2.titulo  }}</h2>
+            <p>{{ post2.descripcion }}</p>
+            <a href="{% url 'blog:detalle_post' post2.slug %}"><button>leer más</button></a>
+        </aside>
+        
+
+        <aside>
+        <img src="{{ post3.imagen_referencial.url }}" alt="" />
+        
+        
+            <h2 class="mb-4"><a href="{% url 'blog:detalle_post' post3.slug %}">{{ post3.titulo }}</a></h2>
+                
+                <p>{{ post3.descripcion }} </p>
+                    <a href="{% url 'blog:detalle_post' post3.slug %}"><button>leer más</button></a>
+        </aside>
+
+        <aside>
+            <img src="{{ post4.imagen_referencial.url }}" alt="" />
+
+            <h2>{{ post4.titulo }}</h2>
+            <p>{{ post4.descripcion }}</p>
+                <a href="{% url 'blog:detalle_post' post4.slug %}"><button>leer más</button></a>
+
+        </aside>
+</div>

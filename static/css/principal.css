@@ -40,7 +40,7 @@ header{
 }
 
 .logo h1 b{
-    color: #cc2b0e;
+    color: #46a2fd;
 }
 
 
@@ -116,6 +116,7 @@ header{
 #icon-menu:hover{
     opacity: 0.8;
 }
+
 
 
 
@@ -311,7 +312,7 @@ footer .redes-footer .fa-youtube-square:hover{
 .news-cards{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 25px;
+    gap: 50px;
     margin: 10px 0;
 
 }
@@ -403,6 +404,7 @@ footer .redes-footer .fa-youtube-square:hover{
 }
 
 .texto, .boton{
+    height: 20px;
     border: 0;
     outline:0;
     transition:0.5s;
@@ -414,15 +416,16 @@ footer .redes-footer .fa-youtube-square:hover{
     background-color: #f4ffd9;
 }
 .boton{
-    padding:18px;
+    padding:25px;
+   
     background:#cc2b0e;
     color: #fff;
     cursor:pointer;
 }
 .correo_e:hover> .texto,
 .correo_e:focus{
-    padding:10px;
-    width:300px;
+    padding:14px;
+    width:280px;
 }
 
 /* menu*/
@@ -462,7 +465,7 @@ a {
     overflow: hidden;
 }
 .enlace:target .submenu {
-    max-height: 300px;
+    max-height: 350px;
 }
 
 @media (min-width:768px ) {
@@ -604,3 +607,4 @@ a {
         
 
 }
+

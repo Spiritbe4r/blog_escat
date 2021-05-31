@@ -1,0 +1,267 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Blog Escatologico {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/articulos.css' %}">
+    <link rel="stylesheet" href={% static 'css/style.css' %}">
+
+
+
+</head>
+<body>
+
+
+
+ <!--Header - menu-->
+ <header>
+
+
+
+    <div class="header-content">
+
+        <div class="logo">
+            <h1>{% block titulo %}{{ titulo }}{% endblock titulo %}<b>{% block subtitulo %}{{ subtitulo }}{% endblock %}</b></h1>
+        </div>
+
+        <div class="menu" id="show-menu">
+                <nav class="navegacion">
+                    <ul class="menu2">
+                        <li class="menu-selected"><a href={% url 'home' %} > <i class="fas fa-home"></i> Inicio</a></li>
+
+
+                    <li class="enlace" id="perfil">
+                <a href="#perfil" class="padre">
+                    <i class="far fa-user"></i>Categorias
+                </a>
+                <div class="submenu">
+
+                    <a href="{% url 'todos' %}">Todos</a>
+                    <a href="{% url 'escatologia' %}">Escatologia</a>
+                    <a href="{% url 'evangelio' %}">Evangelio</a>
+                    <a href="{% url 'noticias' %}">Noticias</a>
+                    <a href="{% url 'apologetica' %}">Apologetica</a>
+                    <a href="{% url 'historia' %}">Historia</a>
+                    <a href="{% url 'devocionales' %}">Devocionales</a>
+                    <a href="{% url 'estudios_biblicos' %}">Estudios</a>
+
+
+                        <li class="menu-selected">
+                            <a href="{% url 'blog' %}" class="text-menu-selected">
+                            <i class="fas fa-file-alt"></i>Blog</a>
+                        </li>
+                        <li class="menu-selected"><a href="{% url 'contact' %}"> <i class="fas fa-headset"></i> Contacto</a></li>
+                        <li class="menu-selected"><a href="{% url 'contact' %}"> <i class="fas fa-headset"></i> Login</a></li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+        <div id="icon-menu">
+            <i class="fas fa-bars"></i>
+
+        </div>
+
+
+</header>
+
+<!--Portada-->
+
+<div class="container-all" id="move-content">
+{% block portada %}
+
+
+<div class="article-container-cover" style="background-image: url('{% static "img/hdr-end-times-min.png"%}')" >
+
+
+
+    <div class="container-info-cover">
+        {% block flyer %}<h1>¡Los Eventos Finales se Acercan!</h1>{% endblock flyer %}
+        <p>{% block versiculo %}He aquí yo vengo pronto, y mi galardón conmigo, para recompensar </p>
+            <p>a cada uno según sea su obra. Apocalipsis 22:12{% endblock versiculo %}</p>
+    </div>
+
+{% endblock portada %}
+</div>
+
+<div class="container-content">
+
+    <article>
+{% block cuerpo %}
+
+
+      <div class="container">
+        <div class="row same-height justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="post-entry text-center">
+
+              <h1 class="mb-4"><a href={% url 'detalle_post' post1.slug %}}">{{ post1.titulo |upper }}</a></h1>
+
+                <p>{{ post1.descripcion }}</p>
+              <div class="post-meta align-items-center text-center">
+                <img src="{{ post1.imagen_referencial.url }}" alt="Image" class="img-fluid">
+                <span class="post-category text-white bg-success mb-3">{{ post1.categoria }}</span>
+                  <br>
+                  <br>
+                <span class="d-inline-block mt-1">Escrito por {{ post1.autor }}</span>
+                <span>{{ post1.fecha_publicacion }}</span>
+                  <p>{{ post1.contenido | safe }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="container">
+        <div class="row same-height justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="post-entry text-center">
+
+              <h1 class="mb-4"><a href={% url 'detalle_post' post2.slug %}>{{ post2.titulo |upper }}</a></h1>
+                <p>{{ post2.descripcion }}</p>
+              <div class="post-meta align-items-center text-center">
+                <img src="{{ post2.imagen_referencial.url }}" alt="Image" class="img-fluid">
+
+                  <span class="post-category text-white bg-success mb-3">{{ post2.categoria }}</span>
+                   <br>
+                  <br>
+                <span class="d-inline-block mt-1">Escrito por {{ post2.autor }}</span>
+
+                <span>El {{ post2.fecha_publicacion }}</span>
+
+                  <p>{{ post2.contenido | safe }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+{% block cards%}
+
+            <!-- news cards-->
+        <div class="news-cards">
+            <div>
+            <img src=" {{ post_general.imagen_referencial.url}}" alt="" />
+
+                <h3>{{ post_general}}</h3>
+                <p>{{ post_general.descripcion }}
+                </p>
+                <a href="{{ 'articulo' }}">learn more <i class="fas fa-angle-double-right"></i></a>
+            </div>
+            <div>
+            <img src="{% static  'img/biblia-min.jpg' %}" alt="" />
+
+                <h3>La biblia.</h3>
+                <p>
+                    La Biblia (del latín biblĭa, y este del griego βιβλία: biblía, «libros»
+                    es un conjunto de libros canónicos que en el judaísmo y el cristianismo se
+                    consideran producto de inspiración divina y un reflejo o registro de la relación entre Dios y la humanidad.
+                </p>
+                <a href="{{ 'articulo' }}">learn more <i class="fas fa-angle-double-right"></i></a>
+            </div>
+            <div>
+                <img src="{% static  'img/biblia-min.jpg' %}" alt="" />
+                <h3>La biblia.</h3>
+                <p>
+                    La Biblia (del latín biblĭa, y este del griego βιβλία: biblía, «libros»
+                    es un conjunto de libros canónicos que en el judaísmo y el cristianismo se
+                    consideran producto de inspiración divina y un reflejo o registro de la relación entre Dios y la humanidad.
+                </p>
+                <a href="{{ 'articulo' }}">learn more <i class="fas fa-angle-double-right"></i></a>
+            </div>
+{% endblock cards %}
+        </div>
+
+    </article>
+
+
+
+
+    <div class="container-aside">
+        {% block aside %}
+
+        <aside>
+        <img src="{% static  'img/maranatha-min.jpg' %}" alt="" />
+
+            <h2>La Segunda Venida de Cristo</h2>
+            <p>Algunas cosas sobre el futuro no son absolutamente claras, y otras cosas, como : Cuando tiene lugar el arrebatamiento y La Segunda venida de Cristo, son tan claras como el día.</p>
+            <a href={{ 'segunda' }}><button>leer más</button></a>
+        </aside>
+
+        <aside>
+            <img src="{% static  'img/el-diezmo-en-el-nuevo-testamento-min.jpg' %}" alt="" />
+                <h2>¿El diezmo en el SEgundo testamento ?</h2>
+                <p>Los israelitas diezmaban “cada año”, y no cada mes o cada semana. “Indefectible-
+                    mente diezmarás... cada año” (Deuteronomio 14:22). </p>
+                    <a href={{ 'diezmo' }}><button>leer más</button></a>
+        </aside>
+
+        <aside>
+            <img src="{% static  'img/despues_de_la_tribulacion-min.jpg' %}" alt="" />
+
+            <h2>El rapto ¿antes o después de la tribulación?</h2>
+            <p>Dentro de la comunidad cristiana existe mucha polémica en cuanto a cuándo tendrá lugar el rapto de la iglesia. Aquí discutiremos dos posturas:
+                la pretribulacional (que rapto sucede antes de la tribulación), y la postribulacional (que el rapto sucede después de la tribulación y en forma
+                multánea con la segunda venida de Jesús a la tierra).</p>
+                <a href={{ 'articulo' }}><button>leer más</button></a>
+
+        </aside>
+ {% endblock aside %}
+    </div>
+{% endblock cuerpo %}
+</div>
+
+    <!-- boton de ir hacia arriba-->
+    <div id="button-up">
+        <i class="fas fa-chevron-up"></i>
+
+    </div>
+<div class="formulario">
+
+             <h3 class="footer-heading mb-4">SUSCRÍBETE</h3>
+             <form action="{% url 'suscribirse' %}" method="post" class="form-footer-subscribe">
+               {% csrf_token %}
+               <div class="correo_e">
+                   <i class="fas fa-envelope"></i>
+                 <input type="text" class="texto"  name="correo">
+                 <button type="submit" class="boton" >SUSCRIBIRSE</button>
+               </div>
+             </form>
+        </div>
+
+<div class="container-footer">
+
+    <footer>
+        <div class="logo-footer">
+            <img src="{% static  'img/4horsemen-min.jpg' %}" alt="" />
+
+        </div>
+
+        <div class="redes-footer">
+            <a href='{{ sociales.facebook }}' target="_blank" ><i class="fab fa-facebook-f icon-redes-footer"></i></a>
+            <!--<a href="#"><i class="fab fa-google-plus-g icon-redes-footer"></i></a>-->
+            <a href='{{ sociales.twitter }}' target="_blank" ><i class="fab fa-youtube-square icon-redes-footer"></i></a>
+        </div>
+
+        <hr>
+        <h4>© 2020 Blog Escatologico - Todos los Derechos Reservados</h4>
+
+    </footer>
+</div>
+    </div>
+
+    <script src="{% static 'js/script.js'%}"></script>
+{% block extrajs %}
+{% endblock extrajs %}
+
+</body>
+</html>

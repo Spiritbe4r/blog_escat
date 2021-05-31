@@ -1,0 +1,73 @@
+{% extends 'home.html' %}
+
+{% load static %}
+<!-- Header -->
+
+
+{% block body %}
+<body>
+  {% include 'vtc/header.html' %}
+  {% block header %}
+  
+  {% endblock header %}
+
+  <div class="container-all" id="move-content">
+    
+
+
+    <div class="article-container-cover" style="background-image: url('{% static 'img/hdr-end-times-min.png' %}')">
+
+
+
+      <div class="container-info-cover">
+        {% block flyer %}<h1>¡Los Eventos Finales se Acercan!</h1>{% endblock flyer %}
+        <p>{% block versiculo %}He aquí yo vengo pronto, y mi galardón conmigo, para recompensar </p>
+        <p>a cada uno según sea su obra. Apocalipsis 22:12{% endblock versiculo %}</p>
+      </div>
+
+      
+    </div>
+
+    <div class="container-content">
+      
+      {% block content %}
+      
+
+      
+
+      {% endblock content %}
+    </div>
+
+  </div>
+
+  <!-- boton de ir hacia arriba-->
+  <div id="button-up">
+    <i class="fas fa-chevron-up"></i>
+
+  </div>
+  <div class="formulario">
+
+    <h3 class="footer-heading ">SUSCRÍBETE</h3>
+    <form action="{% url 'base:suscribirse' %}" method="post" class="form-footer-subscribe">
+      {% csrf_token %}
+      <div class="correo_e">
+        <i class="fas fa-envelope "></i>
+        <input type="text" class="texto" name="correo">
+        <button type="submit" class="boton">SUSCRIBIRSE</button>
+      </div>
+    </form>
+  </div>
+
+
+  </div>
+
+  <!-- Footer -->
+  {% include 'footer.html' %}
+  <!-- Block javascript -->
+  {% block javascript %}
+  <script src="{% static 'js/script.js'%}"></script>
+
+  {% endblock javascript %}
+</body>
+{% endblock body %}
+

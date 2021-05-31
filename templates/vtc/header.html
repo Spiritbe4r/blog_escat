@@ -1,0 +1,57 @@
+<header>
+
+
+
+    <div class="header-content">
+
+        <div class="logo">
+            <h1>{% block titulo %}{{ titulo }}{% endblock titulo %}<b>{% block subtitulo %}{{ subtitulo }}{% endblock %}</b></h1>
+        </div>
+
+        <div class="menu" id="show-menu">
+                <nav class="navegacion">
+                    <ul class="dropdown">
+                        <li class=""><a href="{% url 'home' %}" > <i class="fas fa-home"></i> Inicio</a></li>
+
+
+                    <li class="enlace" id="perfil">
+                <a href="#perfil" onclick="myFunction();" class="dropbtn" type="button">
+                    <i class="far fa-user"></i>Categorias
+                </a>
+                <div class="submenu ml-2" id="myDropdown">
+
+                    <a href="{% url 'blog:todos' %}">Todos</a>
+                    <a href="{% url 'blog:escatologia' %}">Escatologia</a>
+                    <a href="{% url 'blog:evangelio' %}">Evangelio</a>
+                    <a href="{% url 'blog:noticias' %}">Noticias</a>
+                    <a href="{% url 'blog:apologetica' %}">Apologetica</a>
+                    <a href="{% url 'blog:historia' %}">Historia</a>
+                    <a href="{% url 'blog:devocionales' %}">Devocionales</a>
+                    <a href="{% url 'blog:estudios_biblicos' %}">Estudios</a>
+                </div>
+                </li>
+
+                        <li class="menu-selected">
+                            <a href="{% url 'blog:blog' %}" class="text-menu-selected">
+                            <i class="fas fa-file-alt"></i>Blog</a>
+                        </li>
+                        <li class=""><a href="{% url 'base:contact' %}"> <i class="fas fa-headset"></i> Contacto</a></li>
+                        <li class=""><a href="{% url 'base:contact' %}"> <i class="fas fa-headset"></i> Login</a></li>
+                        <li class=""><a href="{% url 'accounts:logout' %}"> <i class="fas fa-headset"></i> Logout</a></li>
+
+                    </ul>
+       </nav>
+
+            </div>
+
+        
+
+        </div>
+
+        <div id="icon-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+      
+
+    </header>
+

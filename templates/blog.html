@@ -1,41 +1,58 @@
-
+{% extends 'home.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Escatologico</title>
-
-    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
-    <link rel="stylesheet" href="{% static 'css/articulos.css' %}">}
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+{% endblock head %}
 
-</head>
+
+
+{% block body %}
 <body>
-
     <!--Header - menu-->
+   <!--Header - menu-->
     <header>
 
         <div class="header-content">
 
             <div class="logo">
-                <h1>Blog<b>Escatologico</b></h1>
+                <h1>Magtimus<b>Pro</b></h1>
             </div>
 
             <div class="menu" id="show-menu">
+                <nav class="navegacion">
+                    <ul class="dropdown">
+                        <li class=""><a href="{% url 'home' %}" > <i class="fas fa-home"></i> Inicio</a></li>
 
-                <nav>
-                    <ul>
-                        <li><a href="{% url 'home' %}"> <i class="fas fa-home"></i> Inicio</a></li>
-                        <li><a href={% url 'recursos' %}> <i class="fab fa-youtube"> </i>Recursos</a></li>
-                        <li class="menu-selected"><a href="{% url 'blog' %}" class="text-menu-selected">
-                            <i class="fas fa-file-alt"></i>Blog</a></li>
-                        <li><a href={% url 'contact' %}> <i class="fas fa-headset"></i> Contacto</a></li>
+
+                    <li class="enlace" id="perfil">
+                <a href="#perfil" onclick="myFunction();" class="dropbtn" type="button">
+                    <i class="far fa-user"></i>Categorias
+                </a>
+                <div class="submenu ml-2" id="myDropdown">
+
+                    <a href="{% url 'blog:todos' %}">Todos</a>
+                    <a href="{% url 'blog:escatologia' %}">Escatologia</a>
+                    <a href="{% url 'blog:evangelio' %}">Evangelio</a>
+                    <a href="{% url 'blog:noticias' %}">Noticias</a>
+                    <a href="{% url 'blog:apologetica' %}">Apologetica</a>
+                    <a href="{% url 'blog:historia' %}">Historia</a>
+                    <a href="{% url 'blog:devocionales' %}">Devocionales</a>
+                    <a href="{% url 'blog:estudios_biblicos' %}">Estudios</a>
+                </div>
+                </li>
+
+                        <li class="menu-selected">
+                            <a href="{% url 'blog:blog' %}" class="text-menu-selected">
+                            <i class="fas fa-file-alt"></i>Blog</a>
+                        </li>
+                        <li class=""><a href="{% url 'base:contact' %}"> <i class="fas fa-headset"></i> Contacto</a></li>
+                        <li class=""><a href="{% url 'base:contact' %}"> <i class="fas fa-headset"></i> Login</a></li>
+                        <li class=""><a href="{% url 'accounts:logout' %}"> <i class="fas fa-headset"></i> Logout</a></li>
+
                     </ul>
-                </nav>
+       </nav>
 
             </div>
 
@@ -50,15 +67,18 @@
         </div>
 
     </header>
-
+    <form action="" method="GET">
 
     <div id="ctn-bars-search">
-        <label for="inputSearch"></label><input type="text" id="inputSearch" placeholder="¿Qué deseas buscar?">
+        <input type="text" id="inputSearch" placeholder="¿Qué deseas buscar?" name="buscar" value="{{ request.GET.buscar }}">
+         
     </div>
-
+  <!--  <button type="submit"><i class="fas fa-search" id="icon-search"></i></button>-->
+    </form>
     <ul id="box-search">
         {% for post in posts %}
-        <li><a href={% url 'home' %}><i class="fas fa-search"></i>{{ post.categoria }}</a></li>
+        <li><a href="{% url 'home' %}"><i class="fas fa-search"></i>{{ post.categoria }} "></a></li>
+        
 
     {% endfor %}
     </ul>
@@ -71,7 +91,7 @@
     <div class="container-all" id="move-content">
 
     
-    <div class="blog-container-cover" style="background-image: url('{% static "img/hdr-end-times-min.png"%}')" >
+    <div class="blog-container-cover" style="background-image: url('{% static 'img/hdr-end-times-min.png' %}')" >
         <div class="container-info-cover">
             <h1>¡Encuentra tu tema interes!</h1>
         </div>
@@ -79,7 +99,7 @@
 
     <div class="container-post">
 
-        <input type="radio" id="TODOS" name="categories" value="TODOS" checked>
+        <input type="radio" id="TODOS" name="categories" value="TODOS" checked >
         <input type="radio" id="ESCATOLOGIA" name="categories" value="ESCATOLOGIA">
         <input type="radio" id="ESTUDIOS BIBLICOS" name="categories" value="ESTUDIOS BIBLICOS">
         <input type="radio" id="EVANGELIO" name="categories" value="EVANGELIO">
@@ -118,10 +138,12 @@
 
                 <ul class="ctn-tag">
                     <li>{{ post.categoria }}</li>
+                    <strong>Likes :{{ post.likes.all.count }}</strong>
+                    
 
                 </ul>
                 <hr>
-                <a href="{% url 'detalle_post' post.slug %}" ><button>Leer más</button></a>
+                <a href="{% url 'blog:detalle_post' post.slug %}" ><button>Leer más</button></a>
 
 
             </div>
@@ -145,33 +167,15 @@
     </div>
 
 
-    <div class="container-footer">	
+    <!-- Footer -->
+        {% include 'footer.html' %}
+    <!-- Block javascript -->
+    {% block js %}
+    <script src="{% static 'js/script.js'%}"></script>
 
-        <footer>
-            <div class="logo-footer">
-                
-                <img src="{% static  'img/4horsemen-min.jpg' %}" alt="" />
-
-            </div>
-
-            <div class="redes-footer">
-                <a href="#"><i class="fab fa-facebook-f icon-redes-footer"></i></a>
-                <!--<a href="#"><i class="fab fa-google-plus-g icon-redes-footer"></i></a>-->
-                <a href="#"><i class="fab fa-instagram icon-redes-footer"></i></a>
-            </div>
-
-            <hr>
-            <h4>© 2020 Blog Escatologico - Todos los Derechos Reservados</h4>
-
-        </footer>
-
-
-        </div>
-
-    </div>
-        <script src="{% static 'js/script.js' %}"></script>
+    {% endblock js %}
 
 
 </body>
+{% endblock body %}
 
-</html>

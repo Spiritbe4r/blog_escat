@@ -1,6 +1,7 @@
+
 document.getElementById("icon-menu").addEventListener("click", mostrar_menu);
 
-function mostrar_menu(){
+function mostrar_menu() {
 
     document.getElementById("move-content").classList.toggle('move-container-all');
     document.getElementById("show-menu").classList.toggle('show-lateral');
@@ -11,26 +12,26 @@ function mostrar_menu(){
 
 document.getElementById("button-up").addEventListener("click", scrollUp);
 
-function scrollUp(){
+function scrollUp() {
 
     const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-    if (currentScroll > 0){
+    if (currentScroll > 0) {
         window.requestAnimationFrame(scrollUp);
-        window.scrollTo (0, currentScroll - (currentScroll / 10));
-        buttonUp.style.transform="scale(0)";
+        window.scrollTo(0, currentScroll - (currentScroll / 10));
+        buttonUp.style.transform = "scale(0)";
     }
 }
 ///   ///
 
-buttonUp= document.getElementById("button-up");
+buttonUp = document.getElementById("button-up");
 
-window.onscroll = function(){
+window.onscroll = function () {
 
     const scroll = document.documentElement.scrollTop;
-    if (scroll > 500){
-        buttonUp.style.transform="scale(1)";
-    }else if (scroll < 500){
-        buttonUp.style.transform="scale(0)";
+    if (scroll > 500) {
+        buttonUp.style.transform = "scale(1)";
+    } else if (scroll < 500) {
+        buttonUp.style.transform = "scale(0)";
     }
 }
 
@@ -39,7 +40,7 @@ window.onscroll = function(){
 
 
 
-                            //Buscador de contenido
+//Buscador de contenido
 
 
 //Ejecutando funciones
@@ -47,20 +48,20 @@ document.getElementById("icon-search").addEventListener("click", mostrar_buscado
 document.getElementById("cover-ctn-search").addEventListener("click", ocultar_buscador);
 
 //Declarando variables
-bars_search =       document.getElementById("ctn-bars-search");
-cover_ctn_search =  document.getElementById("cover-ctn-search");
-inputSearch =       document.getElementById("inputSearch");
-box_search =        document.getElementById("box-search");
+bars_search = document.getElementById("ctn-bars-search");
+cover_ctn_search = document.getElementById("cover-ctn-search");
+inputSearch = document.getElementById("inputSearch");
+box_search = document.getElementById("box-search");
 
 
 //Funcion para mostrar el buscador
-function mostrar_buscador(){
+function mostrar_buscador() {
 
     bars_search.style.top = "80px";
     cover_ctn_search.style.display = "block";
     inputSearch.focus();
 
-    if (inputSearch.value === ""){
+    if (inputSearch.value === "") {
         box_search.style.display = "none";
     }
 
@@ -69,7 +70,7 @@ function mostrar_buscador(){
 
 
 //Funcion para ocultar el buscador
-function ocultar_buscador(){
+function ocultar_buscador() {
 
     bars_search.style.top = "-10px";
     cover_ctn_search.style.display = "none";
@@ -81,15 +82,15 @@ function ocultar_buscador(){
 
 // ejecucion de codigo al presionar una tecla //
 
-function presionar_tecla(){
+function presionar_tecla() {
 
     let tecla_esc = event.keyCode;
 
-    if (tecla_esc===27){
+    if (tecla_esc === 27) {
 
         return ocultar_buscador();
-        
-    
+
+
     }
 
 }
@@ -100,7 +101,7 @@ window.onkeydown = presionar_tecla;
 
 document.getElementById("inputSearch").addEventListener("keyup", buscador_interno);
 
-function buscador_interno(){
+function buscador_interno() {
 
 
     let filter = inputSearch.value.toUpperCase();
@@ -132,7 +133,25 @@ function buscador_interno(){
 
 
 }
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
 
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("submenu");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
 
 /* scroll
 

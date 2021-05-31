@@ -1,6 +1,6 @@
-{% extends 'header_menu.html' %}
+{% extends 'home.html' %}
 {% load static %}
-{% block css %}
+{% block head %}
     <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
     <link rel="stylesheet" href="{% static 'css/principal.css' %}">
 
@@ -10,14 +10,17 @@
 
 
 {% block body %}
+<body>
+{% include 'vtc/header.html' %}
   
 {% block content %}
-
-<div class="contenedor">
+<br>
+<br>
+<div class="contenedor ">
 <br>
 <br>
 
-<form action="" method = "POST" class="form" novalidate>
+<form  method = "POST" class="form" novalidate>
  <div class="form-header">
                 <h1 class="form-title">C<span>ontacto</span></h1>
 
@@ -36,12 +39,6 @@
         {{ form.email }}
         {% for error in form.email.errors %}
             <span style="Color:red;">This fields is required : {{ error }}}</span>
-        {% endfor %}
-
-        <label class="form-label" for="telephone">Telefono</label>
-        {{ form.telephone }}
-        {% for error in form.telephone.errors %}
-            <span style="Color:red;">This fields is required : {{ error }}</span>
         {% endfor %}
 
         <label class="form-label" for="asunto">Asunto</label>
@@ -66,4 +63,7 @@
     </div>
 
 {% endblock %}
-{% endblock %}
+
+</body>
+
+{% endblock body %}
